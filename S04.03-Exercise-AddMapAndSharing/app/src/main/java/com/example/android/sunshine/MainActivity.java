@@ -221,7 +221,15 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
+        if(id == R.id.action_map){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            String location = "Venezia";
+            Uri uri = Uri.parse("geo:0,0?q=" + location);
+            intent.setData(uri);
+            if(intent.resolveActivity(getPackageManager()) != null){
+                startActivity(intent);
+            }
+        }
 
         return super.onOptionsItemSelected(item);
     }
